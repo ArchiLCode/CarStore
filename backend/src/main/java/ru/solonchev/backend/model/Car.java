@@ -32,4 +32,15 @@ public class Car {
     @ManyToMany(mappedBy = "cars")
     @JsonIgnore
     private List<User> users = new ArrayList<>();
+
+    public void addUser(User user) {
+        this.users.add(user);
+        user.getCars().add(this);
+
+    }
+
+    public void removeUser(User user) {
+        user.getCars().remove(this);
+        users.remove(user);
+    }
 }
