@@ -14,7 +14,7 @@ import java.util.List;
 @CrossOrigin
 @RequestMapping("/car-store")
 @RequiredArgsConstructor
-public class PizzaController {
+public class CarController {
     private final UserService userService;
     private final CarService carService;
 

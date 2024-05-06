@@ -3,12 +3,9 @@ package ru.solonchev.backend.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.solonchev.backend.dto.car.CarAddRequest;
 import ru.solonchev.backend.dto.user.request.UserAddRequest;
 import ru.solonchev.backend.dto.user.response.UserResponse;
-import ru.solonchev.backend.model.Car;
 import ru.solonchev.backend.model.User;
-import ru.solonchev.backend.service.CarService;
 import ru.solonchev.backend.service.UserService;
 
 import java.util.List;
