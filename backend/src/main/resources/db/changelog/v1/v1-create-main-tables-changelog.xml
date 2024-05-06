@@ -15,4 +15,8 @@
         <sqlFile path="db/changelog/sql/create-user-car-table.sql"/>
     </changeSet>
 
+    <changeSet id="v1-4" author="Mark Solonchev">
+        <loadData tableName="car" relativeToChangelogFile="true" file="../data/car-data.csv" separator=";"/>
+    </changeSet>
+
 </databaseChangeLog>
