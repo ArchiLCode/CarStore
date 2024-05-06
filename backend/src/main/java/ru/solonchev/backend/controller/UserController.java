@@ -20,7 +20,6 @@ import java.util.List;
 public class UserController {
 
     private final UserService userService;
-    private final CarService carService;
 
     private User userAddRequestToUser(UserAddRequest userAddRequest) {
         return User.builder()

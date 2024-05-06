@@ -53,7 +53,7 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
-    public void deleteAllPizzasAtUser(Long id) throws UserNotFoundException {
+    public void deleteAllCarsAtUser(Long id) throws UserNotFoundException {
         Optional<User> optionalUser = userRepository.findById(id);
         if (optionalUser.isEmpty()) {
             throw new UserNotFoundException();
