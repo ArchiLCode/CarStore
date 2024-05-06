@@ -30,25 +30,25 @@ public class BackendApiExceptionHandler {
 
     @ExceptionHandler
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ResponseEntity<ApiErrorResponse> pizzaAlreadyExist(CarAlreadyExistException exception) {
+    public ResponseEntity<ApiErrorResponse> carAlreadyExist(CarAlreadyExistException exception) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.toApiErrorResponse());
     }
 
     @ExceptionHandler
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public ResponseEntity<ApiErrorResponse> pizzaNotFound(CarNotFoundException exception) {
+    public ResponseEntity<ApiErrorResponse> carNotFound(CarNotFoundException exception) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.toApiErrorResponse());
     }
 
     @ExceptionHandler
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ResponseEntity<ApiErrorResponse> pizzaAlreadyExistsAtUser(CarAlreadyExistAtUserException exception) {
+    public ResponseEntity<ApiErrorResponse> carAlreadyExistsAtUser(CarAlreadyExistAtUserException exception) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.toApiErrorResponse());
     }
 
     @ExceptionHandler
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ResponseEntity<ApiErrorResponse> pizzaNotFoundAtUser(CarNotFoundAtUserException exception) {
+    public ResponseEntity<ApiErrorResponse> carNotFoundAtUser(CarNotFoundAtUserException exception) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.toApiErrorResponse());
     }
 }
