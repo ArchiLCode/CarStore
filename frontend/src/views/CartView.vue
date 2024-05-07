@@ -90,7 +90,9 @@ export default {
     clearCart() {
       this.response = {};
       AXIOS.delete(
-        "https://car-store-backend-05sq.onrender.com/car-store/user/" + this.userId + "/car",
+        "https://car-store-backend-05sq.onrender.com/car-store/user/" +
+          this.userId +
+          "/car",
         {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("token"),
@@ -100,7 +102,9 @@ export default {
     },
     makeOrder() {
       AXIOS.post(
-        "https://car-store-backend-05sq.onrender.com/car-store/user/" + this.userId + "/email",
+        "https://car-store-backend-05sq.onrender.com/car-store/user/" +
+          this.userId +
+          "/email",
         {},
         {
           headers: {
@@ -120,7 +124,9 @@ export default {
   created() {
     if (localStorage.getItem("token")) {
       AXIOS.get(
-        "https://car-store-backend-05sq.onrender.com/car-store/users/" + this.userId + "/cars",
+        "https://car-store-backend-05sq.onrender.com/car-store/users/" +
+          this.userId +
+          "/cars",
         {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("token"),
@@ -129,6 +135,19 @@ export default {
       )
         .then((response) => {
           this.response = response.data;
+          setTimeout(() => {
+            this.updateCart();
+            for (const element of document.querySelectorAll(".button")) {
+              element.addEventListener("click", () => {
+                this.updateCart();
+              });
+            }
+            for (const element of document.querySelectorAll(".rem-item")) {
+              element.addEventListener("click", () => {
+                this.updateCart();
+              });
+            }
+          }, 100);
         })
         .catch((e) => {
           if (localStorage.getItem("token")) {
@@ -137,21 +156,6 @@ export default {
           }
         });
     }
-  },
-  mounted() {
-    setTimeout(() => {
-      this.updateCart();
-      for (const element of document.querySelectorAll(".button")) {
-        element.addEventListener("click", () => {
-          this.updateCart();
-        });
-      }
-      for (const element of document.querySelectorAll(".rem-item")) {
-        element.addEventListener("click", () => {
-          this.updateCart();
-        });
-      }
-    }, 500);
   },
 };
 </script>
