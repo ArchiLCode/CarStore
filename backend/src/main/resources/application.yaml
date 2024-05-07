@@ -1,6 +1,19 @@
 spring:
   application:
     name: backend
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username:
+    password:
+    test-connection: true
+    properties:
+      mail:
+        smtp:
+          auth: true
+    sender:
+      email: no-reply@example.com
+      text: no-reply
   datasource:
     url: jdbc:postgresql://localhost:5555/car-store
     password: password
