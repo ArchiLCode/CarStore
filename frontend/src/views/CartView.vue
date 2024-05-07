@@ -32,7 +32,10 @@
           Количество товаров - {{ this.orderCount }} шт.
           <i class="pizza-icon fa-solid fa-pizza-slice"></i>
         </p>
-        <h2>Сумма заказа: {{ this.orderAmount }} &#8381;</h2>
+        <h2>
+          Сумма заказа:<br />
+          {{ this.splitPrice(this.orderAmount) }} &#8381;
+        </h2>
         <button @click="makeOrder()" class="make-order">Оформить заказ</button>
       </div>
     </div>
@@ -62,7 +65,9 @@ export default {
       const amounts = document.querySelectorAll(".price");
       const counters = document.querySelectorAll(".amount");
       for (const amount of amounts) {
-        this.orderAmount += Number(amount.innerText.split(" ")[0]);
+        this.orderAmount += Number(
+          amount.innerText.split(" ").slice(0, -1).join("")
+        );
       }
       for (const counter of counters) {
         this.orderCount += Number(counter.innerText);
@@ -71,10 +76,21 @@ export default {
     checkAuthorization() {
       return localStorage.getItem("token");
     },
+    splitPrice(price) {
+      const reversedArr = String(price).split("").reverse();
+      let newString = [];
+      for (let i = 0; i < reversedArr.length; i++) {
+        newString.push(String(reversedArr[i]));
+        if ((i + 1) % 3 === 0) {
+          newString.push(" ");
+        }
+      }
+      return newString.reverse().join("");
+    },
     clearCart() {
       this.response = {};
       AXIOS.delete(
-        "http://localhost:9090/pizza-store/user/" + this.userId + "/pizza",
+        "http://localhost:9090/car-store/user/" + this.userId + "/pizza",
         {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("token"),
@@ -84,7 +100,7 @@ export default {
     },
     makeOrder() {
       AXIOS.post(
-        "http://localhost:9090/pizza-store/user/" + this.userId + "/email",
+        "http://localhost:9090/car-store/user/" + this.userId + "/email",
         {},
         {
           headers: {
@@ -104,7 +120,7 @@ export default {
   created() {
     if (localStorage.getItem("token")) {
       AXIOS.get(
-        "http://localhost:9090/pizza-store/users/" + this.userId + "/pizzas",
+        "http://localhost:9090/car-store/users/" + this.userId + "/cars",
         {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("token"),
@@ -147,7 +163,7 @@ export default {
   justify-content: space-between;
   .order-area {
     .pizza-icon {
-      color: #f7d22d;
+      color: #ff9131;
     }
     display: flex;
     flex-direction: column;
@@ -160,9 +176,10 @@ export default {
     font-family: Montserrat;
     border-radius: 20px;
     transition: 0.1s;
-    color: #0e0c0d;
+    color: #ffffff;
+    background-color: #3a3a3a;
     &:hover {
-      box-shadow: 0px 2px 24px 2px #00000015;
+      box-shadow: 0px 2px 24px 2px #f4f4f415;
     }
     h2 {
       font-size: 24px;
@@ -183,7 +200,8 @@ export default {
       color: #0e0c0d;
       transition: 0.1s;
       &:hover {
-        box-shadow: 0px 2px 10px 2px #00000024;
+        color: #fff;
+        box-shadow: 0px 2px 24px 2px #f4f4f415;
       }
     }
   }

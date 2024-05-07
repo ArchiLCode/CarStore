@@ -131,6 +131,9 @@ export default {
           background-color: #646464;
           border: 1px solid #646464;
         }
+        &::placeholder {
+          color: rgba(255, 255, 255, 0.521);
+        }
       }
       .password-wrapper {
         position: relative;

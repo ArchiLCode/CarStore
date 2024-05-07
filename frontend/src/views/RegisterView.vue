@@ -201,6 +201,9 @@ export default {
       }
     }
   }
+  .password-valid {
+    color: #fff;
+  }
   .fa-eye {
     position: absolute;
     right: 15px;

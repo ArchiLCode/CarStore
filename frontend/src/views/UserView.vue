@@ -8,7 +8,7 @@
       <h2 class="email">{{ this.response.email }}</h2>
     </div>
     <div class="img-container">
-      <img src="@/assets/pizza-cat.png" alt="" />
+      <img src="@/assets/cat-in-car.png" alt="" />
     </div>
   </div>
 </template>
@@ -24,8 +24,7 @@ export default {
   },
   created() {
     AXIOS.get(
-      "http://localhost:9090/pizza-store/users/" +
-        localStorage.getItem("userId"),
+      "http://localhost:9090/car-store/users/" + localStorage.getItem("userId"),
       {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
@@ -48,13 +47,14 @@ export default {
 <style lang="scss" scoped>
 .user {
   font-family: Montserrat;
+  color: #fff;
   .user-title {
-    color: #f7d22d;
+    color: #ff9131;
     font-size: 32px;
     font-weight: 800;
   }
   .img-container {
-    width: 50%;
+    width: 60%;
     margin: 0 auto;
     img {
       width: 100%;

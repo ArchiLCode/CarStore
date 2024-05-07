@@ -1,18 +1,22 @@
 <template>
   <div class="order-item">
     <div class="img-container">
-      <img :src="this.order.imgLink" alt="Pizza" />
+      <img :src="this.order.imgLink" alt="Car" />
     </div>
     <div class="order-text">
       <div class="order-name">{{ this.order.name }}</div>
       <div class="description">{{ this.order.description }}</div>
     </div>
-    <div class="counter-container">
-      <button @click="subOne($event)" class="sub-one button">–</button>
-      <div class="amount">{{ this.amount }}</div>
-      <button @click="addOne($event)" class="add-one button">+</button>
+    <div class="price-container">
+      <div class="price">
+        {{ this.splitPrice(this.order.price * this.amount) }} &#8381;
+      </div>
+      <div class="counter-container">
+        <button @click="subOne($event)" class="sub-one button">–</button>
+        <div class="amount">{{ this.amount }}</div>
+        <button @click="addOne($event)" class="add-one button">+</button>
+      </div>
     </div>
-    <div class="price">{{ this.order.price * this.amount }} &#8381;</div>
     <i
       @click="removeItem($event)"
       class="rem-item fa-regular fa-circle-xmark"
@@ -37,9 +41,9 @@ export default {
         .querySelector(".orders-list")
         .removeChild(event.target.closest(".order-item"));
       AXIOS.delete(
-        "http://localhost:9090/pizza-store/user/" +
+        "http://localhost:9090/car-store/user/" +
           localStorage.getItem("userId") +
-          "/pizza/" +
+          "/car/" +
           this.order.id,
         {
           headers: {
@@ -70,24 +74,28 @@ export default {
         addOne.classList.remove("disabled");
       }
     },
+    splitPrice(price) {
+      const reversedArr = String(price).split("").reverse();
+      let newString = [];
+      for (let i = 0; i < reversedArr.length; i++) {
+        newString.push(String(reversedArr[i]));
+        if ((i + 1) % 3 === 0) {
+          newString.push(" ");
+        }
+      }
+      return newString.reverse().join("");
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
 .img-container {
-  width: 22%;
+  width: 25%;
   img {
     width: 100%;
-    border-radius: 50%;
   }
-}
-.order-pizza {
-  display: inline-flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 10px;
+  padding-right: 30px;
 }
 .order-item {
   font-family: Montserrat;
@@ -95,33 +103,41 @@ export default {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding-right: 30px;
+  padding: 30px;
   border-radius: 20px;
   transition: 0.1s;
   margin-bottom: 20px;
+  background-color: #3a3a3a;
   &:hover {
-    box-shadow: 0px 2px 24px 2px #00000015;
+    box-shadow: 0px 2px 24px 2px #f4f4f415;
   }
 
   .order-text {
-    max-width: 350px;
+    max-width: 300px;
   }
   .order-name {
-    color: #0e0c0d;
+    color: #ffffff;
     font-weight: 800;
     font-size: 24px;
     margin-bottom: 20px;
   }
+  .price-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 200px;
+  }
   .description {
-    color: #686466;
+    color: #ababab;
     font-weight: 500;
     font-size: 13px;
   }
   .price {
-    color: #f7d22d;
+    color: #ff9131;
     font-size: 24px;
     font-weight: 800;
-    width: 120px;
     text-align: center;
   }
   .counter-container {
@@ -156,7 +172,7 @@ export default {
     cursor: pointer;
     color: #696f7a;
     &:hover {
-      color: #f7d22d;
+      color: #ff9131;
     }
   }
 }

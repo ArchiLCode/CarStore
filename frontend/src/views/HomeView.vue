@@ -12,7 +12,7 @@
         </button>
       </div>
     </div>
-    <div class="pizza-list">
+    <div class="cars-list">
       <CarCard v-for="car in this.response" :key="car.id" :car="car" />
     </div>
   </div>
@@ -35,7 +35,7 @@ export default {
   },
   methods: {
     axiosGetPizzas() {
-      AXIOS.get("http://localhost:9090/pizza-store/pizzas")
+      AXIOS.get("http://localhost:9090/car-store/cars")
         .then((response) => {
           this.response = response.data;
         })
@@ -52,7 +52,7 @@ export default {
     },
     sortByName(event) {
       this.activateBtn(event);
-      AXIOS.get("http://localhost:9090/pizza-store/pizzas/order/name")
+      AXIOS.get("http://localhost:9090/car-store/cars/order/name")
         .then((response) => {
           this.response = response.data;
         })
@@ -62,7 +62,7 @@ export default {
     },
     sortByPrice(event) {
       this.activateBtn(event);
-      AXIOS.get("http://localhost:9090/pizza-store/pizzas/order/price")
+      AXIOS.get("http://localhost:9090/car-store/cars/order/price")
         .then((response) => {
           this.response = response.data;
         })
@@ -119,11 +119,11 @@ export default {
       }
     }
   }
-  .pizza-list {
+  .cars-list {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     justify-items: center;
-    grid-gap: 10px;
+    grid-gap: 20px;
     padding-bottom: 70px;
   }
 }
