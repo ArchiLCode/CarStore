@@ -17,11 +17,11 @@ public class OrderItem {
     private String name;
     private double price;
 
-    public static List<OrderItem> createListOfPizzas(List<Car> pizzas) {
+    public static List<OrderItem> createListOfCars(List<Car> cars) {
         List<OrderItem> result = new ArrayList<>();
-        pizzas.forEach(pizza -> result.add(OrderItem.builder()
-                .name(pizza.getName())
-                .price(pizza.getPrice())
+        cars.forEach(car -> result.add(OrderItem.builder()
+                .name(car.getName())
+                .price(car.getPrice())
                 .build()));
         return result;
     }

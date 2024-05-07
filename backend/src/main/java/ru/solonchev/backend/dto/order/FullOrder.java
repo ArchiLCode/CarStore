@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 public class FullOrder {
-    private List<OrderItem> pizzas;
+    private List<OrderItem> cars;
     private double resultPrice;
 
     public static FullOrder createFullOrder(List<Car> cars) {
@@ -21,7 +21,7 @@ public class FullOrder {
         for (Car car : cars)
             resultPrice += car.getPrice();
         return FullOrder.builder()
-                .pizzas(OrderItem.createListOfPizzas(cars))
+                .cars(OrderItem.createListOfCars(cars))
                 .resultPrice(resultPrice)
                 .build();
     }
