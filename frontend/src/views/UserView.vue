@@ -24,7 +24,8 @@ export default {
   },
   created() {
     AXIOS.get(
-      "http://localhost:9090/car-store/users/" + localStorage.getItem("userId"),
+      "https://car-store-backend-amhi.onrender.com/car-store/users/" +
+        localStorage.getItem("userId"),
       {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),

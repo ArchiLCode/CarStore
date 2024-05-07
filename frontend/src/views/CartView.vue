@@ -90,7 +90,7 @@ export default {
     clearCart() {
       this.response = {};
       AXIOS.delete(
-        "http://localhost:9090/car-store/user/" + this.userId + "/car",
+        "https://car-store-backend-amhi.onrender.com/car-store/user/" + this.userId + "/car",
         {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("token"),
@@ -100,7 +100,7 @@ export default {
     },
     makeOrder() {
       AXIOS.post(
-        "http://localhost:9090/car-store/user/" + this.userId + "/email",
+        "https://car-store-backend-amhi.onrender.com/car-store/user/" + this.userId + "/email",
         {},
         {
           headers: {
@@ -120,7 +120,7 @@ export default {
   created() {
     if (localStorage.getItem("token")) {
       AXIOS.get(
-        "http://localhost:9090/car-store/users/" + this.userId + "/cars",
+        "https://car-store-backend-amhi.onrender.com/car-store/users/" + this.userId + "/cars",
         {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("token"),

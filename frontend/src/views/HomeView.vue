@@ -35,7 +35,7 @@ export default {
   },
   methods: {
     axiosGetPizzas() {
-      AXIOS.get("http://localhost:9090/car-store/cars")
+      AXIOS.get("https://car-store-backend-amhi.onrender.com/car-store/cars")
         .then((response) => {
           this.response = response.data;
         })
@@ -52,7 +52,7 @@ export default {
     },
     sortByName(event) {
       this.activateBtn(event);
-      AXIOS.get("http://localhost:9090/car-store/cars/order/name")
+      AXIOS.get("https://car-store-backend-amhi.onrender.com/car-store/cars/order/name")
         .then((response) => {
           this.response = response.data;
         })
@@ -62,7 +62,7 @@ export default {
     },
     sortByPrice(event) {
       this.activateBtn(event);
-      AXIOS.get("http://localhost:9090/car-store/cars/order/price")
+      AXIOS.get("https://car-store-backend-amhi.onrender.com/car-store/cars/order/price")
         .then((response) => {
           this.response = response.data;
         })

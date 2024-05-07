@@ -33,7 +33,7 @@ export default {
     addToCart() {
       if (localStorage.getItem("token")) {
         AXIOS.post(
-          "http://localhost:9090/car-store/user/" +
+          "https://car-store-backend-amhi.onrender.com/car-store/user/" +
             this.userId +
             "/car/" +
             this.car.id,

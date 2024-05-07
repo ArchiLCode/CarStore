@@ -46,11 +46,15 @@ export default {
   methods: {
     login() {
       const data = JSON.stringify(this.formData);
-      AXIOS.post("http://localhost:9090/auth/signin", data, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
+      AXIOS.post(
+        "https://car-store-backend-amhi.onrender.com/auth/signin",
+        data,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
         .then((response) => {
           console.log(response);
           localStorage.setItem("userId", response.data.user_id);
