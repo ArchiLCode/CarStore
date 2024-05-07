@@ -30,7 +30,7 @@
         <h2>Ваша корзина</h2>
         <p>
           Количество товаров - {{ this.orderCount }} шт.
-          <i class="pizza-icon fa-solid fa-pizza-slice"></i>
+          <i class="car-icon fa-solid fa-car"></i>
         </p>
         <h2>
           Сумма заказа:<br />
@@ -90,7 +90,7 @@ export default {
     clearCart() {
       this.response = {};
       AXIOS.delete(
-        "http://localhost:9090/car-store/user/" + this.userId + "/pizza",
+        "http://localhost:9090/car-store/user/" + this.userId + "/car",
         {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("token"),
@@ -162,7 +162,7 @@ export default {
   flex-direction: row;
   justify-content: space-between;
   .order-area {
-    .pizza-icon {
+    .car-icon {
       color: #ff9131;
     }
     display: flex;
