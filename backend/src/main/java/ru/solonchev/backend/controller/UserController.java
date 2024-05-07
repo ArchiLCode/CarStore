@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.solonchev.backend.dto.user.request.UserAddRequest;
 import ru.solonchev.backend.dto.user.response.UserResponse;
 import ru.solonchev.backend.model.User;
+import ru.solonchev.backend.service.EmailService;
 import ru.solonchev.backend.service.UserService;
 
 import java.util.List;
@@ -17,6 +18,7 @@ import java.util.List;
 public class UserController {
 
     private final UserService userService;
+    private final EmailService emailService;
 
     private User userAddRequestToUser(UserAddRequest userAddRequest) {
         return User.builder()
@@ -32,6 +34,15 @@ public class UserController {
             @RequestBody UserAddRequest user
     ) {
         userService.addUser(userAddRequestToUser(user));
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/user/{userId}/email")
+    public ResponseEntity<Void> sendEmail(
+            @PathVariable("userId") Long userId,
+            @RequestHeader("Receiver") String receiver
+    ) {
+        emailService.sendEmail(userId, receiver);
         return ResponseEntity.ok().build();
     }
 
