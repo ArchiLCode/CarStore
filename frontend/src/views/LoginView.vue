@@ -47,7 +47,7 @@ export default {
     login() {
       const data = JSON.stringify(this.formData);
       AXIOS.post(
-        "https://car-store-backend-amhi.onrender.com/auth/signin",
+        "https://car-store-backend-05sq.onrender.com/auth/signin",
         data,
         {
           headers: {

@@ -24,7 +24,7 @@ export default {
   },
   created() {
     AXIOS.get(
-      "https://car-store-backend-amhi.onrender.com/car-store/users/" +
+      "https://car-store-backend-05sq.onrender.com/car-store/users/" +
         localStorage.getItem("userId"),
       {
         headers: {

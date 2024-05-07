@@ -93,7 +93,7 @@ export default {
       const data = JSON.stringify(this.formData);
       const passwordsCorrect = this.checkPasswords();
       if (passwordsCorrect && this.checkInputs()) {
-        AXIOS.post("https://car-store-backend-amhi.onrender.com/auth/signup", data, {
+        AXIOS.post("https://car-store-backend-05sq.onrender.com/auth/signup", data, {
           headers: {
             "Content-Type": "application/json",
           },

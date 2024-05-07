@@ -41,7 +41,7 @@ export default {
         .querySelector(".orders-list")
         .removeChild(event.target.closest(".order-item"));
       AXIOS.delete(
-        "https://car-store-backend-amhi.onrender.com/car-store/user/" +
+        "https://car-store-backend-05sq.onrender.com/car-store/user/" +
           localStorage.getItem("userId") +
           "/car/" +
           this.order.id,
