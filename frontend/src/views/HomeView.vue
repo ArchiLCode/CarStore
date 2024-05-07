@@ -34,7 +34,7 @@ export default {
     };
   },
   methods: {
-    axiosGetPizzas() {
+    axiosGetCars() {
       AXIOS.get("https://car-store-backend-05sq.onrender.com/car-store/cars")
         .then((response) => {
           this.response = response.data;
@@ -52,7 +52,9 @@ export default {
     },
     sortByName(event) {
       this.activateBtn(event);
-      AXIOS.get("https://car-store-backend-05sq.onrender.com/car-store/cars/order/name")
+      AXIOS.get(
+        "https://car-store-backend-05sq.onrender.com/car-store/cars/order/name"
+      )
         .then((response) => {
           this.response = response.data;
         })
@@ -62,7 +64,9 @@ export default {
     },
     sortByPrice(event) {
       this.activateBtn(event);
-      AXIOS.get("https://car-store-backend-05sq.onrender.com/car-store/cars/order/price")
+      AXIOS.get(
+        "https://car-store-backend-05sq.onrender.com/car-store/cars/order/price"
+      )
         .then((response) => {
           this.response = response.data;
         })
@@ -72,11 +76,11 @@ export default {
     },
     sortByDefault(event) {
       this.activateBtn(event);
-      this.axiosGetPizzas();
+      this.axiosGetCars();
     },
   },
   created() {
-    this.axiosGetPizzas();
+    this.axiosGetCars();
   },
 };
 </script>
