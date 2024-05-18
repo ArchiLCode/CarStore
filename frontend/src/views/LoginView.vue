@@ -7,7 +7,7 @@
           v-model="formData.username"
           type="email"
           class="email"
-          placeholder="example@pizza.ru"
+          placeholder="example@car.ru"
           required
         />
         <div class="password-wrapper">

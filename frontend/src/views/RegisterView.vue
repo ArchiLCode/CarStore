@@ -22,7 +22,7 @@
           v-model="formData.email"
           type="email"
           class="email"
-          placeholder="example@pizza.ru"
+          placeholder="example@car.ru"
           required
           pattern="^\S+@\S+\.\S+$"
         />
@@ -93,11 +93,15 @@ export default {
       const data = JSON.stringify(this.formData);
       const passwordsCorrect = this.checkPasswords();
       if (passwordsCorrect && this.checkInputs()) {
-        AXIOS.post("https://car-store-backend-05sq.onrender.com/auth/signup", data, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }).then(() => {
+        AXIOS.post(
+          "https://car-store-backend-05sq.onrender.com/auth/signup",
+          data,
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        ).then(() => {
           this.$router.push("/login");
         });
       } else {
